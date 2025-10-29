@@ -38,6 +38,7 @@
                 .then(response => {
                     // Remove post from array after successful deletion
                     this.posts.splice(idx, 1)
+                    // this.posts = this.posts.filter(post=>post.id!=id)
                 })
                 .catch(error => {
                     alert("Error deleting post: " + error.message)

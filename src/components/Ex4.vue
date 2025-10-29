@@ -9,12 +9,16 @@
         },
         methods: {
             add() {
-                this.taskList.push( { 'desc': this.desc, 'deadline': this.deadline } )
+                this.taskList.push( { Desc: this.desc, Deadline: this.deadline } )
                 this.desc = ''
                 this.deadline = ''
             },
             // TODO: Add a new method, to delete a task completed
-            
+            deleteTask(idx) {
+                // Remove the task at index idx
+                // this.taskList.splice(idx, 1);
+                this.posts = this.posts.filter(post=>post.id!=id)
+            }
         }
     }
 
@@ -33,11 +37,20 @@
     <button type="button" @click="add" class="btn btn-primary">Add New Task</button>
     <hr>
 
-    <!-- TODO: Modify following code -->
-    <task-tracker ></task-tracker>
-
+    <div class="d-flex flex-wrap">
+        <TaskTracker 
+            v-for="(task, idx) in taskList" 
+            :key="idx" 
+            :task="{ Name: task.desc, Deadline: task.deadline }"
+            :idx="idx"
+            @done="deleteTask(idx)"
+        />
+    </div>
 </template>
 
 <style scoped>
-   
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}  
 </style>
