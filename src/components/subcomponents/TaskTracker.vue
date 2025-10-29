@@ -11,21 +11,18 @@
             task: Object,
             idx: Number
         },
-        methods: {
-            markDone() {
-                this.$emit('Done', this.idx);
-            }
-        }
-
+        emits: ['removeTask']
+    }
 </script>
 
 <template>
     <!-- TODO: add your template code here --> 
     <div class="card" style="width: 18rem; margin: 0.5rem;">
         <div class="card-body">
-            <p>{{ task.desc }}</p>
             <h5 class="card-title">Deadline: {{ task.deadline }}</h5>
-            <button class="btn btn-primary mt-3" @click="markDone">Done</button>
+            <hr></hr>
+            <p>{{ task.desc }}</p>
+            <button class="btn btn-primary mt-3" @click="$emit('removeTask',idx)">Done</button>
         </div>
   </div>
 </template>
