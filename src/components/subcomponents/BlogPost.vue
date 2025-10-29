@@ -21,12 +21,11 @@
 <template>
     <!-- TODO: add your template code here. Use boostrap card --> 
     <div class="card" style="width: 14rem; margin-bottom: 1rem;">
-    <img :src="imageSrc" class="card-img-top" alt="mood image">
-    <div class="card-body">
-      <h6 class="card-title">{{ subject }}</h6>
-      <p class="card-text">{{ entry }}</p>
-      <slot></slot>
+        <img :src="imageSrc" class="card-img-top" alt="mood image">
+        <div class="card-body">
+        <h6 class="card-title">{{ subject }}</h6>
+        <p class="card-text">{{ entry }}</p>
+        </div>
     </div>
-  </div>
 </template>
 
