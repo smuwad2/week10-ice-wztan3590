@@ -28,12 +28,38 @@
             .catch(error => {
                 this.posts = [{ entry: 'There was an error: ' + error.message }]
             })
+        },
+        methods: {
+            deletePost(id, idx) {
+                axios.get(`${this.baseUrl}/deletePost?id=${id}`)
+                .then(response => {
+                    // Remove post from array after successful deletion
+                    this.posts.splice(idx, 1)
+                })
+                .catch(error => {
+                    alert("Error deleting post: " + error.message)
+                })
+            }
         }
     }
 </script>
 
 <template>
-   <!-- TODO: make use of the 'blog-post' component to display the blog posts -->
-
+    <!-- TODO: make use of the 'blog-post' component to display the blog posts -->
+    <div>
+    <blogPost
+      v-for="(post, idx) in posts" 
+      :key="idx"
+      :subject="post.subject"
+      :entry="post.entry"
+      :mood="post.mood"
+    >
+    <button 
+        class="btn btn-primary"
+        @click="deletePost(post.id, idx)">
+        Delete
+    </button>
+    </blogPost>
+  </div>
 </template>
 
